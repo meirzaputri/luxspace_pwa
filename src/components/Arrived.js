@@ -1,4 +1,5 @@
-function Arrived() {
+import ArrivedItem from './ArrivedItem.js'
+function Arrived({ items }) {
     return(
         <section className="flex flex-col py-16">
       <div className="container mx-auto mb-4">
@@ -8,12 +9,21 @@ function Arrived() {
           </h3>
         </div>
       </div>
-      <div className="overflow-x-hidden px-4" id="carousel">
+      <div className="overflow-x-auto px-4" id="carousel">
         <div className="container mx-auto"></div>
         {/* <!-- <div className="overflow-hidden z-10"> --> */}
         <div className="flex -mx-4 flex-row relative">
+
+        {console.log("Items sebelum map:", items)}
+          {/* iterasi card berdasarkan item */}
+          {items && items.map(function (item){
+            return(
+              <ArrivedItem item={item} key={item.id}/>
+            )
+          })}
+
           {/* <!-- START: JUST ARRIVED ROW 1 --> */}
-          <div className="px-4 relative card group">
+          {/* <div className="px-4 relative card group">
             <div
               className="rounded-xl overflow-hidden card-shadow relative"
               style={{ width: '287px', height: '386px' }}
@@ -49,14 +59,14 @@ function Arrived() {
             </div>
             <h5 className="text-lg font-semibold mt-4">Cangkir Mauttie</h5>
             <span className="">IDR 89.300</span>
-            <a href="details.html" className="stretched-link">
+            <a href="details.html" className="stretched-link"> */}
               {/* <!-- fake children --> */}
-            </a>
-          </div>
+            {/* </a>
+          </div> */}
           {/* <!-- END: JUST ARRIVED ROW 1 --> */}
 
           {/* <!-- START: JUST ARRIVED ROW 2 --> */}
-          <div className="px-4 relative card group">
+          {/* <div className="px-4 relative card group">
             <div
               className="rounded-xl overflow-hidden card-shadow relative"
               style={{ width: '287px', height: '386px' }}
@@ -92,14 +102,14 @@ function Arrived() {
             </div>
             <h5 className="text-lg font-semibold mt-4">Bankyu Minimay</h5>
             <span className="">IDR 67.899</span>
-            <a href="details.html" className="stretched-link">
+            <a href="details.html" className="stretched-link"> */}
               {/* <!-- fake children --> */}
-            </a>
-          </div>
+            {/* </a>
+          </div> */}
           {/* <!-- END: JUST ARRIVED ROW 2 --> */}
 
           {/* <!-- START: JUST ARRIVED ROW 3 --> */}
-          <div className="px-4 relative card group">
+          {/* <div className="px-4 relative card group">
             <div
               className="rounded-xl overflow-hidden card-shadow relative"
               style={{ width: '287px', height: '386px' }}
@@ -135,14 +145,14 @@ function Arrived() {
             </div>
             <h5 className="text-lg font-semibold mt-4">Buku Sidu Edition</h5>
             <span className="">IDR 120.699</span>
-            <a href="details.html" className="stretched-link">
+            <a href="details.html" className="stretched-link"> */}
               {/* <!-- fake children --> */}
-            </a>
-          </div>
+            {/* </a>
+          </div> */}
           {/* <!-- END: JUST ARRIVED ROW 3 --> */}
 
           {/* <!-- START: JUST ARRIVED ROW 4 --> */}
-          <div className="px-4 relative card group">
+          {/* <div className="px-4 relative card group">
             <div
               className="rounded-xl overflow-hidden card-shadow relative"
               style={{ width: '287px', height: '386px' }}
@@ -178,14 +188,14 @@ function Arrived() {
             </div>
             <h5 className="text-lg font-semibold mt-4">Watch Notes X</h5>
             <span className="">IDR 1.973.000</span>
-            <a href="details.html" className="stretched-link">
+            <a href="details.html" className="stretched-link"> */}
               {/* <!-- fake children --> */}
-            </a>
-          </div>
+            {/* </a>
+          </div> */}
           {/* <!-- END: JUST ARRIVED ROW 4 --> */}
 
           {/* <!-- START: JUST ARRIVED ROW 5 --> */}
-          <div className="px-4 relative card group">
+          {/* <div className="px-4 relative card group">
             <div
               className="rounded-xl overflow-hidden card-shadow relative"
               style={{ width: '287px', height: '386px' }}
@@ -221,14 +231,14 @@ function Arrived() {
             </div>
             <h5 className="text-lg font-semibold mt-4">Racking Plants</h5>
             <span className="">IDR 599.400</span>
-            <a href="details.html" className="stretched-link">
+            <a href="details.html" className="stretched-link"> */}
               {/* <!-- fake children --> */}
-            </a>
-          </div>
+            {/* </a>
+          </div> */}
           {/* <!-- END: JUST ARRIVED ROW 5 --> */}
 
           {/* <!-- START: JUST ARRIVED ROW 3 --> */}
-          <div className="px-4 relative card group">
+          {/* <div className="px-4 relative card group">
             <div
               className="rounded-xl overflow-hidden card-shadow relative"
               style={{ width: '287px', height: '386px' }}
@@ -264,14 +274,14 @@ function Arrived() {
             </div>
             <h5 className="text-lg font-semibold mt-4">Racking Plants</h5>
             <span className="">IDR 599.400</span>
-            <a href="#details.html" className="stretched-link">
+            <a href="#details.html" className="stretched-link"> */}
               {/* <!-- fake children --> */}
-            </a>
-          </div>
+            {/* </a>
+          </div> */}
           {/* <!-- END: JUST ARRIVED ROW 3 --> */}
 
           {/* <!-- START: JUST ARRIVED ROW 1 --> */}
-          <div className="px-4 relative card group">
+          {/* <div className="px-4 relative card group">
             <div
               className="rounded-xl overflow-hidden card-shadow relative"
               style={{ width: '287px', height: '386px' }}
@@ -307,10 +317,10 @@ function Arrived() {
             </div>
             <h5 className="text-lg font-semibold mt-4">Racking Plants</h5>
             <span className="">IDR 599.400</span>
-            <a href="#details.html" className="stretched-link">
+            <a href="#details.html" className="stretched-link"> */}
               {/* <!-- fake children --> */}
-            </a>
-          </div>
+            {/* </a>
+          </div> */}
           {/* <!-- END: JUST ARRIVED ROW 1 --> */}
         </div>
       </div>

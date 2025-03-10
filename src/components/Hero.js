@@ -45,6 +45,7 @@ function Hero() {
           />
         </div>
       </div>
+      {/* conditional rendering */}
       {showModal && <Modal handleShowModal={handleShowModal} />}
     </section>
     )

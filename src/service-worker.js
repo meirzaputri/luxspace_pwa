@@ -7,7 +7,7 @@
 // You can also remove this file if you'd prefer not to use a
 // service worker, and the Workbox build step will be skipped.
 
-import { clientsClaim } from 'workbox-core';
+import { cacheNames, clientsClaim } from 'workbox-core';
 import { ExpirationPlugin } from 'workbox-expiration';
 import { precacheAndRoute, createHandlerBoundToURL } from 'workbox-precaching';
 import { registerRoute } from 'workbox-routing';
@@ -74,6 +74,25 @@ registerRoute(({url}) => url.origin === 'https://fonts.googleapis.com' || url.or
   ],
 })
 );
+
+registerRoute(({url}) => url.origin.includes("fakestoreapi.com"), new NetworkFirst({
+  cacheName: 'apidata',
+  plugins: [
+    new ExpirationPlugin({
+      maxAgeSeconds: 360,
+      maxEntries: 30
+    })
+  ]
+}));
+
+// registerRoute(({url}) => /\.(jpe?g|png)$/i.test(url.pathname), new StaleWhileRevalidate({
+//   cacheName: 'apiimage',
+//   plugins: [
+//     new ExpirationPlugin({
+//       maxEntries: 30
+//     })
+//   ]
+// }));
 
 // mendefinisikan event di service worker
 self.addEventListener('install', function(event) {
