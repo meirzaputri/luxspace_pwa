@@ -1,4 +1,4 @@
-import logo from '../images/content/logo.png';
+import logo from '../images/content/pikabuy.png';
 function Splash() {
     return(
         <section>
@@ -9,7 +9,7 @@ function Splash() {
                         alt="LuxSpace | Fullfill your house with beautiful furniture"
                         className="mx-auto mb-8" />
                         <p className="mb-16 px-4">
-                            Kami menyediakan furniture berkelas yang membuat ruangan terasa homey
+                            We offer a curated selection of fashion, jewelry, and electronics to match your style and needs.
                         </p>
                     </div>
                 </div>

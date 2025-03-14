@@ -39,7 +39,7 @@ function ArrivedItem({ item }) {
               <img
                 src={item.image}
                 alt=""
-                className="w-full h-full object-cover object-center"
+                className="w-full h-full object-contain object-center"
               />
             </div>
             <h5 className="text-lg font-semibold mt-4">{item.title}</h5>

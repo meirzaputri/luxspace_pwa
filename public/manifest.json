@@ -1,45 +1,46 @@
 {
-  "short_name": "LuxSpace",
-  "name": "LuxSpace PWA",
+  "short_name": "PikAbuy",
+  "name": "PikAbuy PWA",
   "icons": [
     
     {
-      "src": "icon-120.png",
+      "src": "pikabuy-120.png",
       "type": "image/png",
       "sizes": "120x120"
     },
     {
-      "src": "icon-144.png",
+      "src": "pikabuy-144.png",
       "type": "image/png",
       "sizes": "144x144"
     },
     {
-      "src": "icon-152.png",
+      "src": "pikabuy-152.png",
       "type": "image/png",
       "sizes": "152x152"
     },
     {
-      "src": "icon-167.png",
+      "src": "pikabuy-167.png",
       "type": "image/png",
       "sizes": "167x167"
     },
     {
-      "src": "icon-180.png",
+      "src": "pikabuy-180.png",
       "type": "image/png",
       "sizes": "180x180"
     },
     {
-      "src": "icon-192.png",
+      "src": "pikabuy-192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "icon-512.png",
+      "src": "pikabuy-512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "theme_color": "#F9CADA",
   "background_color": "#ffffff"

@@ -15,11 +15,11 @@ function Hero() {
         className="w-full absolute z-20 inset-0 md:relative md:w-1/2 text-center flex flex-col justify-center hero-caption"
       >
         <h1 className="text-3xl md:text-5xl leading-tight font-semibold">
-          The Room <br className="" />You've Dreaming
+          Shop The Way <br className="" />You Love
         </h1>
         <h2 className="px-8 text-base md:px-0 md:text-lg my-6 tracking-wide">
-          Kami menyediakan furniture berkelas yang
-          <br className="hidden lg:block" />membuat ruangan terasa homey
+        We offer a curated selection of fashion, jewelry, and electronics 
+          <br className="hidden lg:block" />to match your style and needs.
         </h2>
         <div>
           <a
@@ -39,7 +39,7 @@ function Hero() {
             ></button>
           </div>
           <img
-            src="images/content/image-section-1.png"
+            src="images/content/image-section-5.jpg"
             alt="hero 1"
             className="absolute inset-0 md:relative w-full h-full object-cover object-center"
           />

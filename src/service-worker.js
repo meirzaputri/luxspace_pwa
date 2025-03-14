@@ -20,6 +20,7 @@ clientsClaim();
 // This variable must be present somewhere in your service worker file,
 // even if you decide not to use precaching. See https://cra.link/PWA
 precacheAndRoute(self.__WB_MANIFEST);
+// console.log("Precached files:", self.__WB_MANIFEST);
 
 // Set up App Shell-style routing, so that all navigation requests
 // are fulfilled with your index.html shell. Learn more at
@@ -85,6 +86,20 @@ registerRoute(({url}) => url.origin.includes("fakestoreapi.com"), new NetworkFir
   ]
 }));
 
+registerRoute(
+  ({ request }) => request.url.includes('manifest.json'),
+  new StaleWhileRevalidate({
+    cacheName: 'manifest',
+    plugins: [
+      new ExpirationPlugin({
+        maxAgeSeconds: 60 * 60 * 24 * 30, 
+        maxEntries: 1, // Simpan hanya 1 versi manifest
+      }),
+    ],
+  })
+);
+
+
 // registerRoute(({url}) => /\.(jpe?g|png)$/i.test(url.pathname), new StaleWhileRevalidate({
 //   cacheName: 'apiimage',
 //   plugins: [
@@ -116,5 +131,14 @@ self.addEventListener('message', (event) => {
     self.skipWaiting();
   }
 });
+
+self.addEventListener('push', function (event) {
+  event.waitUntil(
+    self.registration.showNotification("LuxSpace", {
+      icon: "./icon-120.png",
+      body: event.data.text()
+    })
+  );
+})
 
 // Any other custom service worker logic can go here.

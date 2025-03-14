@@ -24,6 +24,7 @@ function App() {
   React.useEffect(function () {
     (async function () {
       const response = await fetch('https://fakestoreapi.com/products');
+
       // konvert respon menjadi json, yang diambil hanya nodes/data dalam bentuk array
       const data  = await response.json();
       console.log("Data fetched:", data);

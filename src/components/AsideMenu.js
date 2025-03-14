@@ -4,8 +4,8 @@ function AsideMenu() {
       <div className="border-t border-b border-gray-200 py-12 mt-16 px-4">
         <div className="flex justify-center mb-8">
           <img
-            src="images/content/logo.png"
-            alt="Luxspace | Fulfill your house with beautiful furniture"
+            src="images/content/pikabuy.png"
+            alt="PikaBuy | Find It. Love It. Buy It."
           />
         </div>
         <aside className="container mx-auto">
