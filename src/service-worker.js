@@ -134,8 +134,8 @@ self.addEventListener('message', (event) => {
 
 self.addEventListener('push', function (event) {
   event.waitUntil(
-    self.registration.showNotification("LuxSpace", {
-      icon: "./icon-120.png",
+    self.registration.showNotification("PikaBuy", {
+      icon: "./pikabuy-120.png",
       body: event.data.text()
     })
   );

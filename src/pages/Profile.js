@@ -38,8 +38,8 @@ function Profile() {
           <div className="w-56 items-center flex">
             <Link to="/">
                 <img
-                src="images/content/logo.png"
-                alt="Luxspace | Fulfill your house with beautiful furniture"
+                src="images/content/pikabuy.png"
+                alt="PikaBuy | Find It. Love It. Buy It."
                 />
             </Link>
           </div>
@@ -173,7 +173,7 @@ function Profile() {
                 className="object-cover w-full h-full"
               />
             </div>
-            <h2 className="text-xl font-semibold mb-1">Masayoshi Angga</h2>
+            <h2 className="text-xl font-semibold mb-1">Clara Blaire</h2>
             <p className="text-lg mb-12">Jr. Website Developer</p>
           </div>
         </div>
