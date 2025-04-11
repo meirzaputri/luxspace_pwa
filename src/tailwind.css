@@ -99,7 +99,7 @@ ul.breadcrumb li:last-child a {
 
 .slider .thumbnail .item:after {
   content: "";
-  @apply transition duration-200 absolute inset-0 bg-black bg-opacity-0 border-2 border-black border-opacity-0 rounded-lg;
+  @apply transition duration-200 absolute inset-0 bg-white bg-opacity-0 border-2 border-pink-600 border-opacity-0 rounded-lg;
 }
 
 .slider .thumbnail .item.selected:after {
@@ -136,3 +136,5 @@ a.cart.cart-filled svg g circle.dot {
 button[disabled] {
   @apply bg-gray-300 hover:bg-gray-300 text-gray-400 hover:text-gray-400 cursor-not-allowed;
 }
+
+

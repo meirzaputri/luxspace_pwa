@@ -1,9 +1,19 @@
+import { Link } from 'react-router-dom';
+// function numberFormat(price) {
+//     const currency = Intl.NumberFormat("en-US", {
+//         style: "currency",
+//         currency: "USD",
+//     });
+//     return currency.format(price);
+// }
+
 function numberFormat(price) {
-    const currency = Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
-    });
-    return currency.format(price);
+  const currency = Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR",
+      maximumFractionDigits: 0
+  });
+  return currency.format(price * 15000);
 }
 
 function ArrivedItem({ item }) {
@@ -17,7 +27,7 @@ function ArrivedItem({ item }) {
                 className="absolute opacity-0 group-hover:opacity-100 transition duration-200 flex items-center justify-center w-full h-full bg-black bg-opacity-35"
               >
                 <div
-                  className="bg-white text-black rounded-full w-16 h-16 flex items-center justify-center"
+                  className="bg-pink-400 text-black rounded-full w-16 h-16 flex items-center justify-center"
                 >
                   <svg
                     className="fill-current"
@@ -44,9 +54,11 @@ function ArrivedItem({ item }) {
             </div>
             <h5 className="text-lg font-semibold mt-4">{item.title}</h5>
             <span className="">{numberFormat(item.price)}</span>
-            <a href="/details" className="stretched-link">
-              {/* <!-- fake children --> */}
-            </a>
+            {/* <Link to={{ pathname: `/details/${item.id}`, state: item }} className="stretched-link">
+            </Link> */}
+
+            <Link to={`/details/${item.id}`} state={item} className="stretched-link">
+            </Link>
           </div>
     )
 }

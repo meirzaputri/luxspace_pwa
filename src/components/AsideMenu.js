@@ -4,17 +4,17 @@ function AsideMenu() {
       <div className="border-t border-b border-gray-200 py-12 mt-16 px-4">
         <div className="flex justify-center mb-8">
           <img
-            src="images/content/pikabuy.png"
+            src="../images/content/pikabuy.png"
             alt="PikaBuy | Find It. Love It. Buy It."
           />
         </div>
         <aside className="container mx-auto">
           <div className="flex flex-wrap -mx-4 justify-center">
             <div className="px-4 w-full md:w-2/12 mb-4 md:mb-0 accordion">
-              <h5 className="text-lg font-semibold mb-2 relative">Overview</h5>
+              <h5 className="text-lg font-semibold mb-2 relative text-[#f472b6]">Overview</h5>
               <ul className="h-0 invisible md:h-auto md:visible overflow-hidden">
                 <li>
-                  <a href="/" className="hover:underline py-1 block">Shipping</a>
+                  <a href="/cart" className="hover:underline py-1 block">Shipping</a>
                 </li>
                 <li>
                   <a href="/" className="hover:underline py-1 block">Refund</a>
@@ -25,7 +25,7 @@ function AsideMenu() {
               </ul>
             </div>
             <div className="px-4 w-full md:w-2/12 mb-4 md:mb-0 accordion">
-              <h5 className="text-lg font-semibold mb-2 relative">Company</h5>
+              <h5 className="text-lg font-semibold mb-2 relative text-[#f472b6]">Company</h5>
               <ul className="h-0 invisible md:h-auto md:visible overflow-hidden">
                 <li>
                   <a href="/" className="hover:underline py-1 block">About</a>
@@ -39,7 +39,7 @@ function AsideMenu() {
               </ul>
             </div>
             <div className="px-4 w-full md:w-2/12 mb-4 md:mb-0 accordion">
-              <h5 className="text-lg font-semibold mb-2 relative">Explore</h5>
+              <h5 className="text-lg font-semibold mb-2 relative text-[#f472b6]">Explore</h5>
               <ul className="h-0 invisible md:h-auto md:visible overflow-hidden">
                 <li>
                   <a href="/" className="hover:underline py-1 block"
@@ -59,7 +59,7 @@ function AsideMenu() {
               </ul>
             </div>
             <div className="px-4 w-full md:w-3/12 mb-4 md:mb-0">
-              <h5 className="text-lg font-semibold mb-2 relative">
+              <h5 className="text-lg font-semibold mb-2 relative text-[#f472b6]">
                 Special Letter
               </h5>
               <form action="/">
