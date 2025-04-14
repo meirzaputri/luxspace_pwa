@@ -1,6 +1,6 @@
 function AsideMenu() {
-    return(
-        <section className="">
+  return (
+    <section className="">
       <div className="border-t border-b border-gray-200 py-12 mt-16 px-4">
         <div className="flex justify-center mb-8">
           <img
@@ -11,50 +11,68 @@ function AsideMenu() {
         <aside className="container mx-auto">
           <div className="flex flex-wrap -mx-4 justify-center">
             <div className="px-4 w-full md:w-2/12 mb-4 md:mb-0 accordion">
-              <h5 className="text-lg font-semibold mb-2 relative text-[#f472b6]">Overview</h5>
+              <h5 className="text-lg font-semibold mb-2 relative text-[#f472b6]">
+                Overview
+              </h5>
               <ul className="h-0 invisible md:h-auto md:visible overflow-hidden">
                 <li>
-                  <a href="/cart" className="hover:underline py-1 block">Shipping</a>
+                  <a href="/cart" className="hover:underline py-1 block">
+                    Shipping
+                  </a>
                 </li>
                 <li>
-                  <a href="/" className="hover:underline py-1 block">Refund</a>
+                  <a href="/" className="hover:underline py-1 block">
+                    Refund
+                  </a>
                 </li>
                 <li>
-                  <a href="/" className="hover:underline py-1 block">Promotion</a>
+                  <a href="/" className="hover:underline py-1 block">
+                    Promotion
+                  </a>
                 </li>
               </ul>
             </div>
             <div className="px-4 w-full md:w-2/12 mb-4 md:mb-0 accordion">
-              <h5 className="text-lg font-semibold mb-2 relative text-[#f472b6]">Company</h5>
+              <h5 className="text-lg font-semibold mb-2 relative text-[#f472b6]">
+                Company
+              </h5>
               <ul className="h-0 invisible md:h-auto md:visible overflow-hidden">
                 <li>
-                  <a href="/" className="hover:underline py-1 block">About</a>
+                  <a href="/" className="hover:underline py-1 block">
+                    About
+                  </a>
                 </li>
                 <li>
-                  <a href="/" className="hover:underline py-1 block">Career</a>
+                  <a href="/" className="hover:underline py-1 block">
+                    Career
+                  </a>
                 </li>
                 <li>
-                  <a href="/" className="hover:underline py-1 block">Contact Us</a>
+                  <a href="/" className="hover:underline py-1 block">
+                    Contact Us
+                  </a>
                 </li>
               </ul>
             </div>
             <div className="px-4 w-full md:w-2/12 mb-4 md:mb-0 accordion">
-              <h5 className="text-lg font-semibold mb-2 relative text-[#f472b6]">Explore</h5>
+              <h5 className="text-lg font-semibold mb-2 relative text-[#f472b6]">
+                Explore
+              </h5>
               <ul className="h-0 invisible md:h-auto md:visible overflow-hidden">
                 <li>
-                  <a href="/" className="hover:underline py-1 block"
-                    >Terms & Conds</a
-                  >
+                  <a href="/" className="hover:underline py-1 block">
+                    Terms & Conds
+                  </a>
                 </li>
                 <li>
-                  <a href="/" className="hover:underline py-1 block"
-                    >Privacy Policy</a
-                  >
+                  <a href="/" className="hover:underline py-1 block">
+                    Privacy Policy
+                  </a>
                 </li>
                 <li>
-                  <a href="/" className="hover:underline py-1 block"
-                    >For Developer</a
-                  >
+                  <a href="/" className="hover:underline py-1 block">
+                    For Developer
+                  </a>
                 </li>
               </ul>
             </div>
@@ -90,7 +108,7 @@ function AsideMenu() {
         </aside>
       </div>
     </section>
-    )
+  );
 }
 
 export default AsideMenu;

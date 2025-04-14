@@ -7,17 +7,13 @@ import "dotenv/config";
 
 const router = express.Router();
 const USD_TO_IDR = 15000;
+
+// MIDTRANS
 router.post("/process-transaction", async (req, res) => {
   // console.log("Request received:", req.body);
-  // console.log("Route hit!");
 
   // Debug isi request body
-  // console.log("Full Request Body di BE:", JSON.stringify(req.body, null, 2));
   // console.log("Items yang diterima di BE:", JSON.stringify(req.body.items, null, 2));
-  // console.log("Request Body:", JSON.stringify(req.body, null, 2));
-
-  // res.status(200).json({ success: true });
-  // console.log("Server Key:", process.env.MIDTRANS_SERVER_KEY);
 
   try {
     const snap = new midtransClient.Snap({
@@ -42,7 +38,10 @@ router.post("/process-transaction", async (req, res) => {
 
     console.log("Item Details:", itemDetails);
 
-    const totalCost = itemDetails.reduce((total, item) => total + item.price * item.quantity, 0);
+    const totalCost = itemDetails.reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
 
     const parameter = {
       transaction_details: {

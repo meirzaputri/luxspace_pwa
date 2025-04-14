@@ -1,36 +1,35 @@
-import { useLayoutEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import Header from '../components/Header.js';
-import Breadcrumb from '../components/Breadcrumb.js';
-import AsideMenu from '../components/AsideMenu.js';
-import Footer from '../components/Footer.js';
-
+import { useLayoutEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import Header from "../components/Header.js";
+import Breadcrumb from "../components/Breadcrumb.js";
+import AsideMenu from "../components/AsideMenu.js";
+import Footer from "../components/Footer.js";
 
 function numberFormat(price) {
   const currency = Intl.NumberFormat("id-ID", {
-      style: "currency",
-      currency: "IDR",
-      maximumFractionDigits: 0
+    style: "currency",
+    currency: "IDR",
+    maximumFractionDigits: 0,
   });
   return currency.format(price * 15000);
 }
 
-
 function Details({ cart, handleAddToCart }) {
   const location = useLocation();
   const item = location.state;
-  // console.log(item);
-  // const {title, price, description, image} = location.state;
 
   const [currentImage, setCurrentImage] = useState(item.image);
   const navigate = useNavigate();
-  useLayoutEffect(function () {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'smooth'
-    })
-  }, [navigate]);
+  useLayoutEffect(
+    function () {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+      });
+    },
+    [navigate]
+  );
 
   return (
     <>
@@ -38,17 +37,12 @@ function Details({ cart, handleAddToCart }) {
       <Breadcrumb />
       <section className="container mx-auto">
         <div className="flex flex-wrap my-4 md:my-12">
-          {/* <div className="w-full md:hidden px-4">
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-semibold "> {item.title.length > 20 ? item.title.substring(0, 20) + "..." : item.title}</h2>
-            <span className="text-xl">{numberFormat(item.price)}</span>
-          </div> */}
           <div className="flex-1">
             <div className="slider">
               <div className="thumbnail">
                 <div className="px-2">
                   <div
-                    className={`item ${currentImage === item.image && 'selected'}`}
-                    // data-img={item.image}
+                    className={`item ${currentImage === item.image && "selected"}`}
                     onClick={() => setCurrentImage(item.image)}
                   >
                     <img
@@ -60,9 +54,10 @@ function Details({ cart, handleAddToCart }) {
                 </div>
                 <div className="px-2">
                   <div
-                    className={`item ${currentImage === "../images/content/showcase-3-back.jpg" && 'selected'}`}
-                    // data-img="../images/content/showcase-1.back.jpg"
-                    onClick={() => setCurrentImage("../images/content/showcase-3-back.jpg")}
+                    className={`item ${currentImage === "../images/content/showcase-3-back.jpg" && "selected"}`}
+                    onClick={() =>
+                      setCurrentImage("../images/content/showcase-3-back.jpg")
+                    }
                   >
                     <img
                       src="../images/content/showcase-3-back.jpg"
@@ -73,9 +68,10 @@ function Details({ cart, handleAddToCart }) {
                 </div>
                 <div className="px-2">
                   <div
-                    className={`item ${currentImage === "../images/content/showcase-3-rear.jpg" && 'selected'}`}
-                    // data-img="../images/content/showcase-1.rear.jpg"
-                    onClick={() => setCurrentImage("../images/content/showcase-3-rear.jpg")}
+                    className={`item ${currentImage === "../images/content/showcase-3-rear.jpg" && "selected"}`}
+                    onClick={() =>
+                      setCurrentImage("../images/content/showcase-3-rear.jpg")
+                    }
                   >
                     <img
                       src="../images/content/showcase-3-rear.jpg"
@@ -86,10 +82,10 @@ function Details({ cart, handleAddToCart }) {
                 </div>
                 <div className="px-2">
                   <div
-                    className={`item ${currentImage === "../images/content/showcase-3-side.jpg" && 'selected'}`}
-                    // data-img="../images/content/showcase-1.side.jpg"
-                    onClick={() => setCurrentImage("../images/content/showcase-3-side.jpg")}
-
+                    className={`item ${currentImage === "../images/content/showcase-3-side.jpg" && "selected"}`}
+                    onClick={() =>
+                      setCurrentImage("../images/content/showcase-3-side.jpg")
+                    }
                   >
                     <img
                       src="../images/content/showcase-3-side.jpg"
@@ -100,9 +96,10 @@ function Details({ cart, handleAddToCart }) {
                 </div>
                 <div className="px-2">
                   <div
-                    className={`item ${currentImage === "../images/content/showcase-3-top.jpg" && 'selected'}`}
-                    // data-img="../images/content/showcase-1.top.jpg"
-                    onClick={() => setCurrentImage("../images/content/showcase-3-top.jpg")}
+                    className={`item ${currentImage === "../images/content/showcase-3-top.jpg" && "selected"}`}
+                    onClick={() =>
+                      setCurrentImage("../images/content/showcase-3-top.jpg")
+                    }
                   >
                     <img
                       src="../images/content/showcase-3-top.jpg"
@@ -124,7 +121,12 @@ function Details({ cart, handleAddToCart }) {
             </div>
           </div>
           <div className="flex-1 px-4 md:p-6">
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-semibold"> {item.title.length > 36 ? item.title.substring(0, 36) + "..." : item.title}</h2>
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-semibold">
+              {" "}
+              {item.title.length > 36
+                ? item.title.substring(0, 36) + "..."
+                : item.title}
+            </h2>
             <p className="text-xl">{numberFormat(item.price)}</p>
 
             <button
@@ -147,7 +149,9 @@ function Details({ cart, handleAddToCart }) {
             </button>
             <hr className="my-8" />
 
-            <h6 className="text-xl font-semibold mb-4 text-[#f472b6]">About the product</h6>
+            <h6 className="text-xl font-semibold mb-4 text-[#f472b6]">
+              About the product
+            </h6>
             <p className="text-xl leading-7 mb-6 text-justify">
               {item.description}
             </p>

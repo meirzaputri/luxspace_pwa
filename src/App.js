@@ -1,115 +1,72 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import Header from './components/Header.js'
-import Hero from './components/Hero.js'
-import Browse from './components/Browse.js';
-import Arrived from './components/Arrived.js';
-import Clients from './components/Clients.js';
-import AsideMenu from './components/AsideMenu.js';
-import Footer from './components/Footer.js';
-import Offline from './components/Offline.js';
-import Splash from './pages/Splash.js';
-import Profile from './pages/Profile.js';
-import Details from './pages/Details.js';
-import Cart from './pages/Cart.js';
-import Success from './pages/Success.js';
-import FAQ from './pages/FAQ.js';
+import Header from "./components/Header.js";
+import Hero from "./components/Hero.js";
+import Browse from "./components/Browse.js";
+import Arrived from "./components/Arrived.js";
+import Clients from "./components/Clients.js";
+import AsideMenu from "./components/AsideMenu.js";
+import Footer from "./components/Footer.js";
+import Offline from "./components/Offline.js";
+import Splash from "./pages/Splash.js";
+import Profile from "./pages/Profile.js";
+import Details from "./pages/Details.js";
+import Cart from "./pages/Cart.js";
+import Success from "./pages/Success.js";
+import FAQ from "./pages/FAQ.js";
 
 function App({ cart }) {
   const [items, setItems] = React.useState([]);
   const [offlineStatus, setOfflineStatus] = React.useState(!navigator.onLine);
   const [isLoading, setIsLoading] = React.useState(true);
- 
+
   function handleOfflineStatus() {
     setOfflineStatus(!navigator.onLine);
   }
 
-  React.useEffect(function () {
-    (async function () {
-      const response = await fetch('https://fakestoreapi.com/products');
+  React.useEffect(
+    function () {
+      (async function () {
+        const response = await fetch("https://fakestoreapi.com/products");
 
-      // konvert respon menjadi json, yang diambil hanya nodes/data dalam bentuk array
-      const data  = await response.json();
-      // console.log("Data fetched:", data);
-      setItems(data);
+        // konvert respon menjadi json, yang diambil hanya nodes/data dalam bentuk array
+        const data = await response.json();
+        // console.log("Data fetched:", data);
+        setItems(data);
+      })();
+      handleOfflineStatus();
+      window.addEventListener("online", handleOfflineStatus);
+      window.addEventListener("offline", handleOfflineStatus);
 
-      // script js untuk carousel
-      // if (!document.querySelector('script[src="./carousel.js"]')) {
-      //   const script = document.createElement("script");
-      //   script.src = "./carousel.js";
-      //   script.async = false;
-      //   document.body.appendChild(script);
-      // }
-    }());
-    handleOfflineStatus();
-    window.addEventListener('online', handleOfflineStatus);
-    window.addEventListener('offline', handleOfflineStatus);
+      setTimeout(function () {
+        setIsLoading(false);
+      }, 1500);
 
-    setTimeout(function(){
-      setIsLoading(false);
-    }, 1500);
-    
-    return function() {
-      window.removeEventListener('online', handleOfflineStatus);
-      window.removeEventListener('offline', handleOfflineStatus);
-    }
-  }, [offlineStatus]);
+      return function () {
+        window.removeEventListener("online", handleOfflineStatus);
+        window.removeEventListener("offline", handleOfflineStatus);
+      };
+    },
+    [offlineStatus]
+  );
 
-  // React.useEffect(function () {
-  //   (async function () {
-  //     const response = await fetch('https://prod-qore-app.qorebase.io/8ySrll0jkMkSJVk/allItems/rows?limit=7&offset=0&$order=asc', {
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         "accept": "application/json",
-  //         "x-api-key": process.env.REACT_APP_APIKEY
-  //       }
-  //     });
-  //     console.log("API Key:", process.env.REACT_APP_APIKEY);
-
-  //     // konvert respon menjadi json, yang diambil hanya nodes/data dalam bentuk array
-  //     const { nodes } = await response.json();
-  //     setItems(nodes);
-  //   }());
-  // }, []);
-
-  // React.useEffect(() => {
-  //   (async function() {
-  //     try {
-  //       console.log("Fetching data...");
-  //       const response = await fetch('https://prod-qore-app.qorebase.io/8ySrll0jkMkSJVk/allItems/rows?limit=7&offset=0&$order=asc', { 
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //           "accept": "application/json",
-  //           "x-api-key": process.env.REACT_APP_APIKEY
-  //         }
-  //       });
-  
-  //       console.log("Response status:", response.status);
-  //       if (!response.ok) throw new Error(`HTTP Error! Status: ${response.status}`);
-  
-  //       const data = await response.json();
-  //       console.log("Fetched data:", data);
-  //       setItems(data.nodes);
-  //     } catch (error) {
-  //       console.error("Fetch error:", error);
-  //     }
-  //   })();
-  // }, []);
   return (
     <>
-    {isLoading === true ? <Splash /> : 
-    (
-      <>
-      {offlineStatus && <Offline />}
-      <Header mode="light" cart={cart} />
-      <Hero/>
-      <Browse/>
-      <Arrived items={items}/>
-      <Clients/>
-      <AsideMenu/>
-      <Footer/>
-      </>)}
+      {isLoading === true ? (
+        <Splash />
+      ) : (
+        <>
+          {offlineStatus && <Offline />}
+          <Header mode="light" cart={cart} />
+          <Hero />
+          <Browse />
+          <Arrived items={items} />
+          <Clients />
+          <AsideMenu />
+          <Footer />
+        </>
+      )}
     </>
   );
 }
@@ -125,46 +82,57 @@ export default function AppRoutes() {
     phone: "",
     courier: "",
     payment: "",
-  })
+  });
 
   function handleAddToCart(item) {
     const currentIndex = cart.length;
-    const newCart = [...cart, {id: currentIndex + 1, item}];
+    const newCart = [...cart, { id: currentIndex + 1, item }];
     setCart(newCart);
     window.localStorage.setItem("cart", JSON.stringify(newCart));
   }
 
   function handleRemoveCartItem(event, id) {
     console.log("handleRemoveCartItem dipanggil dengan id:", id);
-    const revisedCart = cart.filter(function(item) {
+    const revisedCart = cart.filter(function (item) {
       return item.id !== id;
     });
     setCart(revisedCart);
     window.localStorage.setItem("cart", JSON.stringify(revisedCart));
   }
 
-  React.useEffect(function(){
-    console.info("useEffect for localStorage");
-    if (cachedCart !== null) {
-      setCart(JSON.parse(cachedCart));
-    }
-  }, [cachedCart])
+  React.useEffect(
+    function () {
+      console.info("useEffect for localStorage");
+      if (cachedCart !== null) {
+        setCart(JSON.parse(cachedCart));
+      }
+    },
+    [cachedCart]
+  );
 
   return (
     <Router>
-      <Routes> 
+      <Routes>
         <Route path="/" element={<App cart={cart} />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/details/:id" element={<Details handleAddToCart={handleAddToCart} cart={cart} />} />
-        {/* <Route path="/details/:id">
-          <Details handleAddToCart={handleAddToCart} cart={cart} />
-        </Route> */}
-        <Route path="/cart" element={<Cart cart={cart} setCart={setCart} shipping={shipping} setShipping={setShipping} handleRemoveCartItem={handleRemoveCartItem} />} />
-        {/* <Route path="/cart">
-          <Cart cart={cart} />
-        </Route> */}
+        <Route path="/profile" element={<Profile cart={cart} />} />
+        <Route
+          path="/details/:id"
+          element={<Details handleAddToCart={handleAddToCart} cart={cart} />}
+        />
+        <Route
+          path="/cart"
+          element={
+            <Cart
+              cart={cart}
+              setCart={setCart}
+              shipping={shipping}
+              setShipping={setShipping}
+              handleRemoveCartItem={handleRemoveCartItem}
+            />
+          }
+        />
         <Route path="/success" element={<Success />} />
-        <Route path="/faq" element={<FAQ />} />
+        <Route path="/faq" element={<FAQ cart={cart} />} />
       </Routes>
     </Router>
   );

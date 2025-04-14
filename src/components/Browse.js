@@ -4,7 +4,8 @@ function Browse() {
       <div className="container mx-auto">
         <div className="flex flex-start mb-4">
           <h3 className="text-2xl capitalize font-semibold">
-            browse collections <br className=""/>made just for you
+            browse collections <br className="" />
+            made just for you
           </h3>
         </div>
         <div className="grid grid-rows-2 grid-cols-9 gap-4">

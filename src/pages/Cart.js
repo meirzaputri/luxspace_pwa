@@ -27,11 +27,9 @@ function Cart({ cart, shipping, setShipping, setCart, handleRemoveCartItem }) {
   const totalPrice = cart.reduce((total, { item }) => total + item.price, 0);
   const formattedTotalPrice = Number(totalPrice.toFixed(2));
   const totalPriceIDR = formattedTotalPrice * 15000;
-  console.log("totalidr", totalPriceIDR);
 
   const [shippingCost, setShippingCost] = useState("");
   const totalCost = totalPriceIDR + shippingCost;
-  console.log("totalCost", totalCost);
 
   // console.log("formattotal", formattedTotalPrice)
   // console.log("total", totalPrice)
@@ -59,7 +57,6 @@ function Cart({ cart, shipping, setShipping, setCart, handleRemoveCartItem }) {
     console.log("Shipping sebelum navigate:", shipping);
 
     if (isShipValid) {
-      // localStorage.setItem("shipping", JSON.stringify(shipping))
       const orderId = generateOrderId();
       // console.log("order Id cart:", orderId);
 
@@ -68,7 +65,7 @@ function Cart({ cart, shipping, setShipping, setCart, handleRemoveCartItem }) {
         items: cart,
         shipping: shipping,
         gross_amount: totalPriceIDR,
-        shippingCost: shippingCost
+        shippingCost: shippingCost,
       };
 
       // console.log("Cart Items sebelum dikirim:", JSON.stringify(orderData, null, 2));
@@ -136,9 +133,8 @@ function Cart({ cart, shipping, setShipping, setCart, handleRemoveCartItem }) {
   const [typingTimeout, setTypingTimeout] = useState();
 
   async function handleCitySearch(keyword) {
-    console.log("🔍 Keyword dikirim:", keyword);
     if (!keyword || keyword.trim() === "") {
-      console.log("Keyword kosong, skip fetch");
+      // console.log("Keyword kosong, tulis keyword");
       return;
     }
     try {
@@ -150,28 +146,26 @@ function Cart({ cart, shipping, setShipping, setCart, handleRemoveCartItem }) {
           },
         }
       );
-      console.log("Kota ditemukan:", res.data);
-      setCityResults(res.data); // ini penting
+      // console.log("Kota ditemukan:", res.data);
+      setCityResults(res.data);
     } catch (err) {
-      console.error("Error ambil kota dari Komerce:", err);
+      // console.error("Error ambil kota dari API:", err);
       setCityResults([]);
     }
   }
 
   useEffect(() => {
     if (shipping.courier) {
-      checkShipping(); 
+      checkShipping();
     }
-  }, [shipping.courier]); 
+  }, [shipping.courier]);
 
   const handleCourierClick = (courier) => {
     setShipping({ ...shipping, courier });
-    console.log("Updated shipping:", { ...shipping, courier });
+    // console.log("Updated shipping:", { ...shipping, courier });
   };
 
   const checkShipping = async () => {
-    console.log("Shipping Courier di FE:", shipping.courier);
-    // console.log("total", totalPrice)
 
     try {
       const res = await axios.get(
@@ -182,7 +176,6 @@ function Cart({ cart, shipping, setShipping, setCart, handleRemoveCartItem }) {
             // receiver_destination_id: "69211",
             receiver_destination_id: shipping.address.id,
             weight: 1,
-            // item_value: formattedTotalPrice,
             item_value: totalPrice,
             cod: false,
             courier: shipping.courier,
@@ -190,8 +183,9 @@ function Cart({ cart, shipping, setShipping, setCart, handleRemoveCartItem }) {
         }
       );
 
-      console.log("Ongkir:", res.data);
-      // Setelah data diterima, pilih ongkos kirim sesuai kurir yang dipilih
+      // console.log("Ongkir:", res.data);
+
+      // Pilih ongkir berdasarkan kurir
       if (res.data && res.data.data && res.data.data.calculate_reguler) {
         const selectedCourier = res.data.data.calculate_reguler.find(
           (item) =>
@@ -199,7 +193,7 @@ function Cart({ cart, shipping, setShipping, setCart, handleRemoveCartItem }) {
         );
 
         if (selectedCourier) {
-          setShippingCost(selectedCourier.shipping_cost); // Set ongkos kirim yang sesuai
+          setShippingCost(selectedCourier.shipping_cost); 
         } else {
           console.error("Kurir tidak ditemukan.");
         }
@@ -209,11 +203,6 @@ function Cart({ cart, shipping, setShipping, setCart, handleRemoveCartItem }) {
     }
   };
 
-  // useEffect(() => {
-  //   if (shipping?.address?.id && shipping?.courier) {
-  //     checkShipping();
-  //   }
-  // }, [shipping.address, shipping.courier]);
   useEffect(() => {
     checkShipping();
   }, []);
@@ -230,14 +219,17 @@ function Cart({ cart, shipping, setShipping, setCart, handleRemoveCartItem }) {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/cart" aria-label="current-page" className="text-[#f472b6]">
+              <Link
+                to="/cart"
+                aria-label="current-page"
+                className="text-[#f472b6]"
+              >
                 Cart
               </Link>
             </li>
           </ul>
         </div>
       </section>
-      {/* <!-- END: BREADCRUMB --> */}
 
       <section className="md:py-16">
         <div className="container mx-auto px-4">
@@ -284,7 +276,7 @@ function Cart({ cart, shipping, setShipping, setCart, handleRemoveCartItem }) {
                 </p>
               )}
 
-              {/* <!-- START: ROW 1 --> */}
+              {/* isi cart */}
               {cart.length > 0 &&
                 cart.map(function ({ id, item }, index) {
                   return (
@@ -329,7 +321,6 @@ function Cart({ cart, shipping, setShipping, setCart, handleRemoveCartItem }) {
                       <div className="px-4 w-2/12">
                         <div className="text-center">
                           <button
-                            // data-delete-item="1"
                             onClick={(event) => handleRemoveCartItem(event, id)}
                             className="text-red-600 border-none focus:outline-none px-3 py-1"
                           >
@@ -349,15 +340,16 @@ function Cart({ cart, shipping, setShipping, setCart, handleRemoveCartItem }) {
                   </h4>
                 </div>
               )}
-
-              {/* <!-- END: ROW 1 --> */}
             </div>
+
             <div className="w-full md:px-4 md:w-4/12" id="shipping-detail">
               <div className="bg-gray-100 px-4 py-6 md:p-8 md:rounded-3xl border border-[#F9CADA]">
                 {/* Form Shipping */}
                 <form onSubmit={handleCheckout}>
                   <div className="flex flex-start mb-6">
-                    <h3 className="text-2xl text-[#f472b6]">Shipping Details</h3>
+                    <h3 className="text-2xl text-[#f472b6]">
+                      Shipping Details
+                    </h3>
                   </div>
 
                   <div className="flex flex-col mb-4">
@@ -569,7 +561,7 @@ function Cart({ cart, shipping, setShipping, setCart, handleRemoveCartItem }) {
                     </div>
                     <div className="flex justify-end mb-4">
                       <h4 className="text-sm font-semibold">
-                        Total Cost: {formatShippingCost(totalCost)} 
+                        Total Cost: {formatShippingCost(totalCost)}
                       </h4>
                     </div>
                   </div>

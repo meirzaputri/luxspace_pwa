@@ -3,15 +3,6 @@ import AsideMenu from "../components/AsideMenu";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 function Success() {
-  //   const location = useLocation();
-  //   const navigate = useNavigate();
-  //   const orderData = location.state?.orderData;
-
-  // console.log("Cart Success:", cart);
-  // console.log("Shipping Success:", shipping);
-  // console.log("Order ID:", orderId);
-
-  //   console.log("Order Data : ", orderData);
   return (
     <>
       <Header />
@@ -24,7 +15,11 @@ function Success() {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/success" aria-label="current-page" className="text-[#f472b6]">
+              <Link
+                to="/success"
+                aria-label="current-page"
+                className="text-[#f472b6]"
+              >
                 Success
               </Link>
             </li>

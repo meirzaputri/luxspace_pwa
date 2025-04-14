@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import AsideMenu from "../components/AsideMenu";
 import Footer from "../components/Footer";
 
- function FAQ() {
+function FAQ({ cart }) {
   const faqs = [
     {
       id: 1,
@@ -41,16 +41,21 @@ import Footer from "../components/Footer";
 
   return (
     <>
-    <Header />
-    {/* <!-- START: BREADCRUMB --> */}
-    <section className="bg-gray-100 py-8 px-4">
+      <Header mode="dark" cart={cart} />
+      
+      {/* <!-- START: BREADCRUMB --> */}
+      <section className="bg-gray-100 py-8 px-4">
         <div className="container mx-auto">
           <ul className="breadcrumb">
             <li>
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/faq" aria-label="current-page" className="text-[#f472b6]">
+              <Link
+                to="/faq"
+                aria-label="current-page"
+                className="text-[#f472b6]"
+              >
                 FAQ
               </Link>
             </li>
@@ -58,33 +63,33 @@ import Footer from "../components/Footer";
         </div>
       </section>
       {/* <!-- END: BREADCRUMB --> */}
-    
-      <div className="max-w-xl mx-auto p-6">
-      {faqs.map((faq, index) => (
-        <div key={faq.id} className="mb-4">
-          <button
-            onClick={() => toggleFAQ(index)}
-            className={`w-full flex justify-between items-center p-4 rounded-xl ${
-              openFAQ === index ? "bg-[#f472b6]" : "bg-[#F9CADA]"
-            } transition`}
-          >
-            <span className="text-lg font-semibold">
-              {faq.id < 10 ? `0${faq.id}` : faq.id} {faq.question}
-            </span>
-            <span>{openFAQ === index ? "−" : "+"}</span>
-          </button>
-          {openFAQ === index && (
-            <div className="p-4 bg-purple-50 rounded-xl text-gray-700">
-              {faq.answer}
-            </div>
-          )}
-        </div>
-      ))}
-    </div>
 
-    <AsideMenu />
-    <Footer />
-  </>
+      <div className="max-w-xl mx-auto p-6">
+        {faqs.map((faq, index) => (
+          <div key={faq.id} className="mb-4">
+            <button
+              onClick={() => toggleFAQ(index)}
+              className={`w-full flex justify-between items-center p-4 rounded-xl ${
+                openFAQ === index ? "bg-[#f472b6]" : "bg-[#F9CADA]"
+              } transition`}
+            >
+              <span className="text-lg font-semibold">
+                {faq.id < 10 ? `0${faq.id}` : faq.id} {faq.question}
+              </span>
+              <span>{openFAQ === index ? "−" : "+"}</span>
+            </button>
+            {openFAQ === index && (
+              <div className="p-4 bg-purple-50 rounded-xl text-gray-700">
+                {faq.answer}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+
+      <AsideMenu />
+      <Footer />
+    </>
   );
 }
 
